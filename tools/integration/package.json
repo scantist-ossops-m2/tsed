@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "private": true,
   "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "build:ts": "tsc --build tsconfig.json && tsc --build tsconfig.esm.json"
+    "build": "yarn barrels && yarn build:ts && yarn run build:browser",
+    "build:ts": "tsc --build tsconfig.json"
   },
   "devDependencies": {
     "@tsed/common": "workspace:*",
@@ -18,6 +18,6 @@
     "@tsed/platform-views": "workspace:*",
     "@tsed/schema": "workspace:*",
     "@tsed/swagger": "workspace:*",
-    "@tsed/typescript": "workspace:*"
+    "@tsed/typescript": "7.69.4"
   }
 }

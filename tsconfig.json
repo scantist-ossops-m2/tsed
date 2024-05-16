@@ -1,8 +1,8 @@
 {
   "files": [],
   "compilerOptions": {
-    "module": "ES2020",
-    "target": "ES2020",
+    "module": "ESNext",
+    "target": "ESNext",
     "noEmit": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -14,31 +14,25 @@
   },
   "references": [
     {
-      "path": "./packages/core"
-    },
-    {
-      "path": "./packages/specs/schema"
+      "path": "./packages/specs/openspec"
     },
     {
       "path": "./packages/di"
     },
     {
-      "path": "./packages/engines"
+      "path": "./packages/specs/schema"
     },
     {
-      "path": "./packages/specs/exceptions"
+      "path": "./packages/core"
     },
     {
       "path": "./packages/platform/platform-exceptions"
     },
     {
-      "path": "./packages/perf"
+      "path": "./packages/platform/platform-params"
     },
     {
-      "path": "./packages/specs/json-mapper"
-    },
-    {
-      "path": "./packages/specs/openspec"
+      "path": "./packages/engines"
     },
     {
       "path": "./packages/platform/platform-router"
@@ -47,28 +41,16 @@
       "path": "./packages/platform/platform-log-middleware"
     },
     {
-      "path": "./packages/platform/platform-params"
-    },
-    {
-      "path": "./packages/utils/normalize-path"
-    },
-    {
-      "path": "./packages/platform/platform-middlewares"
-    },
-    {
-      "path": "./packages/third-parties/components-scan"
+      "path": "./packages/platform/platform-views"
     },
     {
       "path": "./packages/platform/common"
     },
     {
+      "path": "./packages/utils/normalize-path"
+    },
+    {
       "path": "./packages/graphql/apollo"
-    },
-    {
-      "path": "./packages/orm/mongoose"
-    },
-    {
-      "path": "./packages/specs/ajv"
     },
     {
       "path": "./packages/graphql/graphql-ws"
@@ -77,106 +59,130 @@
       "path": "./packages/graphql/typegraphql"
     },
     {
-      "path": "./packages/platform/platform-response-filter"
-    },
-    {
-      "path": "./packages/orm/adapters-redis"
-    },
-    {
-      "path": "./packages/platform/platform-views"
+      "path": "./packages/specs/ajv"
     },
     {
       "path": "./packages/orm/adapters"
     },
     {
-      "path": "./packages/platform/platform-test-sdk"
+      "path": "./packages/specs/json-mapper"
     },
     {
-      "path": "./packages/orm/ioredis"
+      "path": "./packages/orm/adapters-redis"
     },
     {
-      "path": "./packages/orm/testing-mongoose"
+      "path": "./packages/orm/mongoose"
     },
     {
-      "path": "./packages/platform/platform-cache"
-    },
-    {
-      "path": "./packages/orm/prisma"
-    },
-    {
-      "path": "./packages/specs/swagger"
-    },
-    {
-      "path": "./packages/platform/platform-koa"
-    },
-    {
-      "path": "./packages/security/oidc-provider"
-    },
-    {
-      "path": "./packages/security/passport"
-    },
-    {
-      "path": "./packages/third-parties/agenda"
+      "path": "./packages/specs/exceptions"
     },
     {
       "path": "./packages/orm/mikro-orm"
     },
     {
-      "path": "./packages/orm/typeorm"
+      "path": "./packages/orm/testing-mongoose"
     },
     {
-      "path": "./packages/platform/platform-serverless-testing"
-    },
-    {
-      "path": "./packages/platform/platform-express"
+      "path": "./packages/third-parties/components-scan"
     },
     {
       "path": "./packages/orm/objection"
     },
     {
-      "path": "./packages/third-parties/formio-types"
+      "path": "./packages/orm/ioredis"
     },
     {
-      "path": "./packages/third-parties/schema-formio"
+      "path": "./packages/orm/prisma"
     },
     {
-      "path": "./packages/third-parties/socketio-testing"
+      "path": "./packages/orm/typeorm"
     },
     {
-      "path": "./packages/third-parties/stripe"
+      "path": "./packages/platform/platform-test-sdk"
     },
     {
-      "path": "./packages/third-parties/formio"
+      "path": "./packages/platform/platform-express"
     },
     {
-      "path": "./packages/third-parties/socketio"
+      "path": "./packages/platform/platform-koa"
     },
     {
-      "path": "./packages/third-parties/vite-ssr-plugin"
+      "path": "./packages/platform/platform-serverless-testing"
     },
     {
-      "path": "./packages/third-parties/vike"
+      "path": "./packages/perf"
     },
     {
-      "path": "./packages/third-parties/terminus"
+      "path": "./packages/specs/swagger"
     },
     {
-      "path": "./packages/platform/platform-serverless"
+      "path": "./packages/security/oidc-provider"
     },
     {
-      "path": "./packages/platform/platform-serverless-http"
+      "path": "./packages/security/oidc-provider-plugin-wildcard-redirect-uri"
     },
     {
-      "path": "./packages/security/jwks"
+      "path": "./packages/security/passport"
+    },
+    {
+      "path": "./packages/third-parties/bullmq"
     },
     {
       "path": "./packages/third-parties/event-emitter"
     },
     {
+      "path": "./packages/third-parties/agenda"
+    },
+    {
+      "path": "./packages/third-parties/formio"
+    },
+    {
+      "path": "./packages/platform/platform-middlewares"
+    },
+    {
+      "path": "./packages/third-parties/formio-types"
+    },
+    {
+      "path": "./packages/platform/platform-response-filter"
+    },
+    {
+      "path": "./packages/platform/platform-serverless"
+    },
+    {
+      "path": "./packages/platform/platform-cache"
+    },
+    {
+      "path": "./packages/third-parties/schema-formio"
+    },
+    {
+      "path": "./packages/security/jwks"
+    },
+    {
+      "path": "./packages/third-parties/socketio"
+    },
+    {
+      "path": "./packages/third-parties/socketio-testing"
+    },
+    {
+      "path": "./packages/third-parties/vike"
+    },
+    {
+      "path": "./packages/third-parties/stripe"
+    },
+    {
+      "path": "./packages/platform/platform-serverless-http"
+    },
+    {
+      "path": "./packages/third-parties/temporal"
+    },
+    {
+      "path": "./packages/third-parties/terminus"
+    },
+    {
       "path": "./tools/integration"
     },
     {
-      "path": "./packages/security/oidc-provider-plugin-wildcard-redirect-uri"
+      "path": "./packages/third-parties/vite-ssr-plugin"
     }
   ],
   "exclude": ["**/node_modules/**", "docs", "docs-references"]

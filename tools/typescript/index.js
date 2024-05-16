@@ -11,8 +11,10 @@ async function main() {
     verbose: false
   });
 
+  const pkgRoot = fs.readJsonSync(join(monoRepo.rootDir, "package.json"));
+
   const tsConfigTemplate = await fs.readJson(join(scriptDir, "./tsconfig.template.json"));
-  const tsConfigEsmTemplate = await fs.readJson(join(scriptDir, "./tsconfig.template.esm.json"));
+  const viteConfig = fs.readFileSync(join(scriptDir, "./vite.config.mts"), {encoding: "utf8"});
 
   const tsConfigRootPath = join(monoRepo.rootDir, "tsconfig.json");
   const tsConfigRoot = await fs.readJson(tsConfigRootPath);
@@ -33,8 +35,7 @@ async function main() {
     if (pkg.pkg.source && pkg.pkg.source.endsWith(".ts")) {
       const tsConfig = cloneDeep(tsConfigTemplate);
       const tsConfigPath = join(path, "tsconfig.json");
-      const tsConfigEsm = cloneDeep(tsConfigEsmTemplate);
-      const tsConfigEsmPath = join(path, "tsconfig.esm.json");
+      const viteConfigPath = join(path, "vite.config.ts");
 
       Object.keys({
         ...(pkg.pkg.peerDependencies || {}),
@@ -48,32 +49,56 @@ async function main() {
           tsConfig.references.push({
             path: relative(dirname(pkg.path), packagesRefsMap.get(peer))
           });
-          tsConfigEsm.references.push({
-            path: relative(dirname(pkg.path), packagesRefsMap.get(peer))
-          });
         });
 
       await fs.writeJson(tsConfigPath, tsConfig, {spaces: 2});
-      await fs.writeJson(tsConfigEsmPath, tsConfigEsm, {spaces: 2});
 
       tsConfigRoot.references.push({
         path: `./${relative(process.cwd(), path)}`
       });
 
-      if (pkg.pkg.scripts["build:cjs"]) {
-        pkg.pkg.scripts["build"] = pkg.pkg.scripts["build"].replace("yarn run build:esm && yarn run build:cjs", "yarn build:ts");
-        delete pkg.pkg.scripts["build:cjs"];
-        delete pkg.pkg.scripts["build:esm"];
+      pkg.pkg.type = "module";
+      pkg.pkg.scripts = {
+        ...pkg.pkg.scripts,
+        build: "yarn barrels && yarn build:ts && yarn run build:browser",
+        "build:ts": "tsc --build tsconfig.json"
+      };
+
+      pkg.pkg.devDependencies["@tsed/typescript"] = pkg.pkg.version;
+      pkg.pkg.devDependencies["typescript"] = pkgRoot.devDependencies["typescript"];
+
+      if (pkg.pkg.scripts["build:browser"] === "webpack") {
+        delete pkg.pkg.devDependencies["webpack"];
+        pkgRoot.devDependencies["vite"] = pkgRoot.devDependencies["vite"];
+
+        pkg.pkg.scripts["build:browser"] = "vite build";
+
+        await fs.writeFile(
+          viteConfigPath,
+          viteConfig.replace("__PACKAGE__", pkg.pkg.name).replace("__NAME__", pkg.pkg.name.split("/")[1]),
+          {
+            encoding: "utf-8"
+          }
+        );
       }
 
-      pkg.pkg.scripts["build:ts"] = "tsc --build tsconfig.json && tsc --build tsconfig.esm.json";
-      pkg.pkg.devDependencies["@tsed/typescript"] = pkg.pkg.version;
+      // prepare exports
+
+      pkg.pkg.main = pkg.pkg.main.replace("cjs/", "esm/");
+
+      if (pkg.pkg.exports && !pkg.pkg.exports["."]) {
+        pkg.pkg.exports = {
+          ".": {
+            ...pkg.pkg.exports,
+            require: undefined
+          }
+        };
+      }
 
       await fs.writeJson(pkg.path, pkg.pkg, {spaces: 2});
+
       try {
-        fs.removeSync(join(path, "tsconfig.compile.esm.json"));
-        fs.removeSync(join(path, "tsconfig.compile.json"));
-        fs.removeSync(join(path, "tsconfig.cjs.json"));
+        fs.removeSync(join(path, "tsconfig.esm.json"));
       } catch {}
     }
   });

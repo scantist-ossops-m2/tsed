@@ -14,7 +14,7 @@ export default defineConfig({
     }),
     dts({
       outDir: "lib/browser/types",
-      include: ["src/browser", "src/common"],
+      include: ["src"],
       exclude: ["**/*.spec.{ts,tsx}", "**/*.stories.{ts,tsx}"]
     })
   ],

@@ -2,11 +2,12 @@
   "extends": "@tsed/typescript/tsconfig.node.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "rootDir": "src",
     "outDir": "./lib/esm",
-    "declaration": true,
     "declarationDir": "./lib/types",
+    "declaration": true,
     "composite": true,
     "noEmit": false
   },

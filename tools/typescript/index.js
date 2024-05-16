@@ -14,6 +14,7 @@ async function main() {
   const pkgRoot = fs.readJsonSync(join(monoRepo.rootDir, "package.json"));
 
   const tsConfigTemplate = await fs.readJson(join(scriptDir, "./tsconfig.template.json"));
+  const tsConfigBuildTemplate = await fs.readJson(join(scriptDir, "./tsconfig.build.template.json"));
   const viteConfig = fs.readFileSync(join(scriptDir, "./vite.config.mts"), {encoding: "utf8"});
 
   const tsConfigRootPath = join(monoRepo.rootDir, "tsconfig.json");
@@ -34,7 +35,9 @@ async function main() {
 
     if (pkg.pkg.source && pkg.pkg.source.endsWith(".ts")) {
       const tsConfig = cloneDeep(tsConfigTemplate);
+      const tsConfigBuild = cloneDeep(tsConfigBuildTemplate);
       const tsConfigPath = join(path, "tsconfig.json");
+      const tsConfigBuildPath = join(path, "tsconfig.build.json");
       const viteConfigPath = join(path, "vite.config.ts");
 
       Object.keys({
@@ -46,12 +49,13 @@ async function main() {
           return packagesRefsMap.has(peer);
         })
         .map((peer) => {
-          tsConfig.references.push({
-            path: relative(dirname(pkg.path), packagesRefsMap.get(peer))
+          tsConfigBuild.references.push({
+            path: join(relative(dirname(pkg.path), packagesRefsMap.get(peer)), "tsconfig.build.json")
           });
         });
 
       await fs.writeJson(tsConfigPath, tsConfig, {spaces: 2});
+      await fs.writeJson(tsConfigBuildPath, tsConfigBuild, {spaces: 2});
 
       tsConfigRoot.references.push({
         path: `./${relative(process.cwd(), path)}`
@@ -60,16 +64,15 @@ async function main() {
       pkg.pkg.type = "module";
       pkg.pkg.scripts = {
         ...pkg.pkg.scripts,
-        build: "yarn barrels && yarn build:ts && yarn run build:browser",
         "build:ts": "tsc --build tsconfig.json"
       };
 
       pkg.pkg.devDependencies["@tsed/typescript"] = pkg.pkg.version;
       pkg.pkg.devDependencies["typescript"] = pkgRoot.devDependencies["typescript"];
 
+      // migrate task
       if (pkg.pkg.scripts["build:browser"] === "webpack") {
         delete pkg.pkg.devDependencies["webpack"];
-        pkgRoot.devDependencies["vite"] = pkgRoot.devDependencies["vite"];
 
         pkg.pkg.scripts["build:browser"] = "vite build";
 
@@ -80,6 +83,10 @@ async function main() {
             encoding: "utf-8"
           }
         );
+      }
+
+      if (pkg.pkg.scripts["build:browser"]) {
+        pkg.pkg.devDependencies["vite"] = pkgRoot.devDependencies["vite"];
       }
 
       // prepare exports

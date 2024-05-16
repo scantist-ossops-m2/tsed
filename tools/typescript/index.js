@@ -1,6 +1,7 @@
 import {findPackages, MonoRepo} from "@tsed/monorepo-utils";
 import {dirname, join, relative} from "node:path";
 import cloneDeep from "lodash/cloneDeep.js";
+import omit from "lodash/omit.js";
 import fs from "fs-extra";
 
 const scriptDir = import.meta.dirname;
@@ -61,13 +62,18 @@ async function main() {
         path: `./${relative(process.cwd(), path)}`
       });
 
-      pkg.pkg.type = "module";
+      pkg.pkg = {
+        name: pkg.pkg.name,
+        description: pkg.pkg.description,
+        type: "module",
+        ...omit(pkg.pkg, ["name", "description"])
+      };
       pkg.pkg.scripts = {
         ...pkg.pkg.scripts,
         "build:ts": "tsc --build tsconfig.json"
       };
 
-      pkg.pkg.devDependencies["@tsed/typescript"] = pkg.pkg.version;
+      pkg.pkg.devDependencies["@tsed/typescript"] = "workspace:*";
       pkg.pkg.devDependencies["typescript"] = pkgRoot.devDependencies["typescript"];
 
       // migrate task

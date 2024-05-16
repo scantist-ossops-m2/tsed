@@ -1,9 +1,8 @@
 import {nameOf} from "@tsed/core";
 import {resolveControllers} from "@tsed/di";
-import filedirname from "filedirname";
 import {importProviders} from "./importProviders";
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+
+const rootDir = import.meta.dirname;
 
 describe("importProviders", () => {
   it("should load providers and merge configuration", async () => {

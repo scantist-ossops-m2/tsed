@@ -3,10 +3,9 @@ import "@tsed/ajv";
 import {Configuration} from "@tsed/di";
 import "@tsed/stripe";
 import "@tsed/swagger";
-import filedirname from "filedirname";
 
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
+
 export {rootDir};
 
 @Configuration({

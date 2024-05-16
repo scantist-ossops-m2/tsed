@@ -8,13 +8,12 @@ import bodyParser from "body-parser";
 import compress from "compression";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-import filedirname from "filedirname";
 import methodOverride from "method-override";
 import "../../src";
 import template from "../template/project.json";
 
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
+
 export {rootDir};
 
 @Configuration({

@@ -1,22 +1,24 @@
 {
   "name": "@tsed/engines",
-  "version": "7.69.4",
   "description": "Template engines library. Provide an API to adding custom engines from decorators.",
+  "type": "module",
+  "version": "7.69.4",
   "source": "./src/index.ts",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/esm/index.js",
   "module": "./lib/esm/index.js",
   "typings": "./lib/types/index.d.ts",
   "exports": {
-    "types": "./lib/types/index.d.ts",
-    "import": "./lib/esm/index.js",
-    "require": "./lib/cjs/index.js",
-    "default": "./lib/esm/index.js"
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "default": "./lib/esm/index.js"
+    }
   },
   "scripts": {
     "build": "yarn barrels && yarn build:ts",
     "barrels": "yarn barrelsby --delete -d ./src -e \"\\.spec\\.ts\" -e \"__mock__\" -e \".benchmark.ts\"",
     "test": "nyc mocha --timeout 15000",
-    "build:ts": "tsc --build tsconfig.json && tsc --build tsconfig.esm.json"
+    "build:ts": "tsc --build tsconfig.json"
   },
   "dependencies": {
     "tslib": "2.6.1"
@@ -41,7 +43,6 @@
     "ect": "^0.5.9",
     "ejs": "^3.1.9",
     "eslint": "^8.57.0",
-    "filedirname": "^2.11.0",
     "haml": "^0.4.3",
     "haml-coffee": "^1.14.1",
     "hamlet": "^0.3.3",
@@ -75,6 +76,7 @@
     "ts-node": "10.9.2",
     "twig": "^1.15.2",
     "twing": "^5.0.2",
+    "typescript": "5.4.5",
     "underscore": "^1.11.0",
     "vash": "^0.13.0",
     "velocityjs": "^2.0.1",

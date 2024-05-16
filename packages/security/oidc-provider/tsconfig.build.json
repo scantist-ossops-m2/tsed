@@ -1,0 +1,58 @@
+{
+  "extends": "@tsed/typescript/tsconfig.node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "rootDir": "src",
+    "outDir": "./lib/esm",
+    "declarationDir": "./lib/types",
+    "declaration": true,
+    "composite": true,
+    "noEmit": false
+  },
+  "include": ["src", "src/**/*.json"],
+  "exclude": [
+    "node_modules",
+    "test",
+    "lib",
+    "benchmark",
+    "coverage",
+    "spec",
+    "**/*.benchmark.ts",
+    "**/*.spec.ts",
+    "keys",
+    "jest.config.js",
+    "**/__mock__/**",
+    "webpack.config.js"
+  ],
+  "references": [
+    {
+      "path": "../../specs/ajv/tsconfig.build.json"
+    },
+    {
+      "path": "../../platform/common/tsconfig.build.json"
+    },
+    {
+      "path": "../../core/tsconfig.build.json"
+    },
+    {
+      "path": "../../di/tsconfig.build.json"
+    },
+    {
+      "path": "../../specs/json-mapper/tsconfig.build.json"
+    },
+    {
+      "path": "../../specs/schema/tsconfig.build.json"
+    },
+    {
+      "path": "../../specs/exceptions/tsconfig.build.json"
+    },
+    {
+      "path": "../jwks/tsconfig.build.json"
+    },
+    {
+      "path": "../../orm/adapters/tsconfig.build.json"
+    }
+  ]
+}

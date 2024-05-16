@@ -21,7 +21,7 @@ export default defineConfig({
   build: {
     outDir: "lib/browser",
     lib: {
-      entry: resolve(import.meta.dirname, "src/index.ts"),
+      entry: resolve(import.meta.dirname, "src/browser/index.ts"),
       formats: ["umd", "es"],
       name: "@tsed/event-emitter",
       fileName: "event-emitter"

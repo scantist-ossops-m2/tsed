@@ -1,22 +1,24 @@
 {
   "name": "@tsed/mikro-orm",
-  "version": "7.69.4",
   "description": "MikroORM package for Ts.ED framework",
+  "type": "module",
+  "version": "7.69.4",
   "source": "./src/index.ts",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/esm/index.js",
   "module": "./lib/esm/index.js",
   "typings": "./lib/types/index.d.ts",
   "exports": {
-    "types": "./lib/types/index.d.ts",
-    "import": "./lib/esm/index.js",
-    "require": "./lib/cjs/index.js",
-    "default": "./lib/esm/index.js"
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "default": "./lib/esm/index.js"
+    }
   },
   "scripts": {
     "build": "yarn barrels && yarn build:ts",
     "barrels": "yarn barrelsby --delete -d ./src -e \"\\.spec\\.ts\" -e \"__mock__\" -e \".benchmark.ts\"",
     "test": "jest",
-    "build:ts": "tsc --build tsconfig.json && tsc --build tsconfig.esm.json"
+    "build:ts": "tsc --build tsconfig.json"
   },
   "dependencies": {
     "tslib": "2.6.1"
@@ -36,7 +38,8 @@
     "cross-env": "7.0.3",
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
-    "ts-mockito": "^2.6.1"
+    "ts-mockito": "^2.6.1",
+    "typescript": "5.4.5"
   },
   "peerDependencies": {
     "@mikro-orm/core": ">=4.5.9",

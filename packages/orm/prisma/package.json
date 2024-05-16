@@ -1,16 +1,18 @@
 {
   "name": "@tsed/prisma",
-  "version": "7.69.4",
   "description": "Generate Ts.ED JsonSchema based on Prisma models",
+  "type": "module",
+  "version": "7.69.4",
   "source": "./src/index.ts",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/esm/index.js",
   "module": "./lib/esm/index.js",
   "typings": "./lib/types/index.d.ts",
   "exports": {
-    "types": "./lib/types/index.d.ts",
-    "import": "./lib/esm/index.js",
-    "require": "./lib/cjs/index.js",
-    "default": "./lib/esm/index.js"
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "default": "./lib/esm/index.js"
+    }
   },
   "bin": {
     "tsed-prisma": "lib/cjs/generator.js"
@@ -20,7 +22,7 @@
     "test": "jest && jest-coverage-thresholds-bumper",
     "generate:postgres": "cd test/postgres && prisma -v && prisma generate",
     "generate:mongo": "cd test/mongo && prisma -v && prisma generate",
-    "build:ts": "tsc --build tsconfig.json && tsc --build tsconfig.esm.json"
+    "build:ts": "tsc --build tsconfig.json"
   },
   "dependencies": {
     "@prisma/generator-helper": "^4.16.2",
@@ -43,7 +45,8 @@
     "barrelsby": "^2.8.1",
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
-    "prisma": "^4.16.2"
+    "prisma": "^4.16.2",
+    "typescript": "5.4.5"
   },
   "peerDependencies": {
     "@prisma/client": ">=4.0.0",

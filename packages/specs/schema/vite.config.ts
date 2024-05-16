@@ -1,11 +1,17 @@
+import {fileURLToPath} from "node:url";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
+import {viteExternalsPlugin} from "vite-plugin-externals";
 import strip from "vite-plugin-strip";
-import {resolve} from "path";
+import {resolve} from "node:path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    viteExternalsPlugin({
+      "@tsed/core": "@tsed/core",
+      "change-case": "change-case"
+    }),
     strip({
       enabled: true,
       domainList: [],
@@ -20,17 +26,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      picomatch: import.meta.resolve("picomatch-browser")
+      picomatch: fileURLToPath(import.meta.resolve("picomatch-browser"))
     }
-  },
-  externals: {
-    "@tsed/core": "@tsed/core",
-    "change-case": "change-case"
   },
   build: {
     outDir: "lib/browser",
     lib: {
-      entry: resolve(__dirname, "src/schema/index.ts"),
+      entry: resolve(import.meta.dirname, "src/index.ts"),
       formats: ["umd", "es"],
       name: "@tsed/schema",
       fileName: "schema"

@@ -1,11 +1,16 @@
+import {resolve} from "path";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
+import {viteExternalsPlugin} from "vite-plugin-externals";
 import strip from "vite-plugin-strip";
-import {resolve} from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    viteExternalsPlugin({
+      "@tsed/core": "@tsed/core",
+      "@tsed/schema": "@tsed/schema"
+    }),
     strip({
       enabled: true,
       domainList: [],

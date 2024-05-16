@@ -1,5 +1,6 @@
 {
   "name": "@tsed/integration",
+  "type": "module",
   "version": "7.69.4",
   "source": "src/index.ts",
   "main": "src/index.js",
@@ -18,6 +19,7 @@
     "@tsed/platform-views": "workspace:*",
     "@tsed/schema": "workspace:*",
     "@tsed/swagger": "workspace:*",
-    "@tsed/typescript": "7.69.4"
+    "@tsed/typescript": "workspace:*",
+    "typescript": "5.4.5"
   }
 }

@@ -18,18 +18,6 @@ export default defineConfig({
       exclude: ["**/*.spec.{ts,tsx}", "**/*.stories.{ts,tsx}"]
     })
   ],
-  resolve: {
-    alias: {
-      picomatch: import.meta.resolve("picomatch-browser")
-    }
-  },
-  externals: {
-    "@tsed/core": "@tsed/core",
-    "@tsed/schema": "@tsed/schema",
-    formiojs: "formiojs",
-    lodash: "lodash",
-    moment: "moment"
-  },
   build: {
     outDir: "lib/browser",
     lib: {

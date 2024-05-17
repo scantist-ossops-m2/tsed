@@ -1,6 +1,6 @@
 import {Controller} from "@tsed/di";
-import {CalendarCtrl} from "./CalendarCtrl";
-import {EventCtrl} from "./EventCtrl";
+import {CalendarCtrl} from "./CalendarCtrl.js";
+import {EventCtrl} from "./EventCtrl.js";
 
 @Controller({
   path: "/rest",

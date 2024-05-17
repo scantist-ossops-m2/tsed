@@ -1,5 +1,5 @@
 import {Injectable} from "@tsed/di";
-import {ConfigService} from "./ConfigService";
+import {ConfigService} from "./ConfigService.js";
 
 @Injectable()
 export class MyService {

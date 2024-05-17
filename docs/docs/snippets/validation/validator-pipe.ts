@@ -2,7 +2,7 @@ import {ValidationError, ValidationPipe} from "@tsed/platform-params";
 import {JsonParameterStore, PipeMethods} from "@tsed/schema";
 import {OverrideProvider} from "@tsed/di";
 import {getJsonSchema} from "@tsed/schema";
-import {validate} from "./validate";
+import {validate} from "./validate.js";
 
 @OverrideProvider(ValidationPipe)
 export class CustomValidationPipe extends ValidationPipe implements PipeMethods {

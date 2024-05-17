@@ -1,6 +1,6 @@
 import {Inject, Injectable} from "@tsed/di";
 import {UseConnection} from "@tsed/typeorm";
-import {UserRepository} from "./repository/UserRepository";
+import {UserRepository} from "./repository/UserRepository.js";
 
 @Injectable()
 export class OtherService {
@@ -8,5 +8,8 @@ export class OtherService {
   @UseConnection("db2")
   userRepository2: UserRepository;
 
-  constructor(public userRepository: UserRepository, @UseConnection("db3") public userRepository3: UserRepository) {}
+  constructor(
+    public userRepository: UserRepository,
+    @UseConnection("db3") public userRepository3: UserRepository
+  ) {}
 }

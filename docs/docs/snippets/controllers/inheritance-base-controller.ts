@@ -1,6 +1,6 @@
 import {Get} from "@tsed/schema";
 import {QueryParams} from "@tsed/platform-params";
-import {SomeService} from "./SomeService";
+import {SomeService} from "./SomeService.js";
 
 export abstract class BaseCtrl {
   constructor(private someService: SomeService) {}

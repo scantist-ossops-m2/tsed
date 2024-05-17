@@ -1,7 +1,7 @@
 import {UseBefore} from "@tsed/platform-middlewares";
 import {Get} from "@tsed/schema";
 import {Controller} from "@tsed/di";
-import {CustomMiddleware} from "./middlewares/CustomMiddleware";
+import {CustomMiddleware} from "./middlewares/CustomMiddleware.js";
 
 @Controller("/test")
 @UseBefore(CustomMiddleware) // global to the controller

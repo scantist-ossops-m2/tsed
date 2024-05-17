@@ -1,5 +1,5 @@
 import {Module} from "@tsed/di";
-import {myContainer} from "./inversify.config";
+import {myContainer} from "./inversify.config.js";
 
 @Module({
   resolvers: [

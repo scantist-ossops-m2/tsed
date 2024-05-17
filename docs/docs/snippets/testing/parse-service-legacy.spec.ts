@@ -1,6 +1,7 @@
+// @ts-nocheck
 import {expect} from "chai";
 import {inject, TestContext} from "@tsed/testing";
-import {ParseService} from "./ParseService";
+import {ParseService} from "./ParseService.js";
 
 describe("ParseService", () => {
   before(TestContext.create);

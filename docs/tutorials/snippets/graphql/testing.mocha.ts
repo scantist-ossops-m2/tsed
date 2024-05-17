@@ -4,7 +4,7 @@ import {ApolloServerTestClient, createTestClient} from "apollo-server-testing";
 import {expect} from "chai";
 import gql from "graphql-tag";
 import {ApolloService} from "@tsed/apollo";
-import {Server} from "./app/Server";
+import {Server} from "./app/Server.js";
 
 const GET_RECIPES = gql`
   query GetRecipes {

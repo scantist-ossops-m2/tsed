@@ -1,5 +1,5 @@
 import {CollectionOf, Default, Generics, Integer, MinLength} from "@tsed/schema";
-import {Pageable} from "./Pageable";
+import {Pageable} from "./Pageable.js";
 
 export class PaginationLink {
   @Property()

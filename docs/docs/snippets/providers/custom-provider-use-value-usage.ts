@@ -1,5 +1,5 @@
 import {Inject, Injectable} from "@tsed/di";
-import {CONNECTION} from "./connection";
+import {CONNECTION} from "./connection.js";
 
 @Injectable()
 export class MyService {

@@ -1,6 +1,6 @@
 import {Configuration} from "@tsed/di";
-import * as v1Controllers from "./controllers/v1/index";
-import * as v0Controllers from "./controllers/v0/index";
+import * as v1Controllers from "./controllers/v1/index.js";
+import * as v0Controllers from "./controllers/v0/index.js";
 
 @Configuration({
   mount: {
@@ -11,9 +11,9 @@ import * as v0Controllers from "./controllers/v0/index";
 export class Server {}
 
 // v1/index.ts
-export * from "./users/UserControllers";
-export * from "./groups/GroupsControllers";
+export * from "./users/UserControllers.js";
+export * from "./groups/GroupsControllers.js";
 
 // v0/index.ts
-export * from "./users/UserControllers";
-export * from "./groups/GroupsControllers";
+export * from "./users/UserControllers.js";
+export * from "./groups/GroupsControllers.js";

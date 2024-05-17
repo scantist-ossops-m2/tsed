@@ -1,5 +1,5 @@
 import {Nullable, Required} from "@tsed/schema";
-import {MyModel, MyModel2} from "./MyModel";
+import {MyModel, MyModel2} from "./MyModel.js";
 
 export class Model {
   @Required(true, null) // allow null

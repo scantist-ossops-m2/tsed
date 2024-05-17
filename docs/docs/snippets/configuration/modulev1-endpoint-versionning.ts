@@ -1,5 +1,5 @@
 import {Module} from "@tsed/di";
-import {UserController} from "./users/UserController";
+import {UserController} from "./users/UserController.js";
 
 @Module({
   mount: {

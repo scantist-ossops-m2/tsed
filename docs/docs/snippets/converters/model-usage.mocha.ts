@@ -1,6 +1,6 @@
 import {deserialize, serialize} from "@tsed/json-mapper";
 import {expect} from "chai";
-import {Person} from "./Person";
+import {Person} from "./Person.js";
 
 describe("Person", () => {
   it("should deserialize a model", () => {

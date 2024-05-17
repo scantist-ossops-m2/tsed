@@ -1,6 +1,6 @@
 import {Module} from "@tsed/di";
-import {MyController} from "./controllers/MyController";
-import {MyService} from "./services/MyService";
+import {MyController} from "./controllers/MyController.js";
+import {MyService} from "./services/MyService.js";
 
 @Module({
   mount: {

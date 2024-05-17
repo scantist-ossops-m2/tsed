@@ -1,7 +1,8 @@
+// @ts-nocheck
 import * as Sinon from "sinon";
 import {User} from "../models/User";
 import {UsersService} from "../services/users/UsersService";
-import {BasicProtocol} from "./BasicProtocol";
+import {BasicProtocol} from "./BasicProtocol.js";
 import {PlatformTest} from "@tsed/common";
 
 describe("BasicProtocol", () => {

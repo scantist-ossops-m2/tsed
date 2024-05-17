@@ -1,7 +1,7 @@
 import {BodyParams} from "@tsed/platform-params";
 import {In, Post, Security} from "@tsed/schema";
 import {Controller} from "@tsed/di";
-import {CalendarModel} from "./models/Calendar";
+import {CalendarModel} from "./models/Calendar.js";
 
 @Controller("/calendars")
 export class CalendarCtrl {

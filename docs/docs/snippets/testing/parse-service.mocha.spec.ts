@@ -1,6 +1,7 @@
+// @ts-nocheck
 import {PlatformTest} from "@tsed/common";
 import {expect} from "chai";
-import {ParseService} from "./ParseService";
+import {ParseService} from "./ParseService.js";
 
 describe("ParseService", () => {
   beforeEach(PlatformTest.create);

@@ -1,7 +1,7 @@
 import {$log} from "@tsed/common";
 import {PlatformExpress} from "@tsed/platform-express";
 import filedirname from "filedirname";
-import {Server} from "./server";
+import {Server} from "./server.js";
 
 // FIXME remove when esm is ready
 const [, rootDir] = filedirname();

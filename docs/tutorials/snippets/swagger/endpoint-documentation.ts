@@ -1,7 +1,7 @@
 import {BodyParams, QueryParams} from "@tsed/platform-params";
 import {Deprecated, Description, Get, Post, Returns, Security, Summary} from "@tsed/schema";
 import {Controller} from "@tsed/di";
-import {CalendarModel} from "./models/Calendar";
+import {CalendarModel} from "./models/Calendar.js";
 
 @Controller("/calendars")
 export class CalendarCtrl {

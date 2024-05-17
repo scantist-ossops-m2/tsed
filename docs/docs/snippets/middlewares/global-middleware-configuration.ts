@@ -1,6 +1,6 @@
 import {PlatformApplication} from "@tsed/common";
 import {Configuration, Inject} from "@tsed/di";
-import {GlobalAcceptMimeMiddleware} from "./GlobalAcceptMimeMiddleware";
+import {GlobalAcceptMimeMiddleware} from "./GlobalAcceptMimeMiddleware.js";
 
 @Configuration({
   acceptMimes: ["application/json"] // add your custom configuration here

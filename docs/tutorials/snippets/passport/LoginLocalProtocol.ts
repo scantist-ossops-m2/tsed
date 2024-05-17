@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {Req} from "@tsed/common";
 import {Inject} from "@tsed/di";
 import {BodyParams} from "@tsed/platform-params";

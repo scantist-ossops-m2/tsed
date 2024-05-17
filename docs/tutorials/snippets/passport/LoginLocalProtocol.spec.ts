@@ -1,8 +1,9 @@
+// @ts-nocheck
 import * as Sinon from "sinon";
 import {PlatformTest} from "@tsed/common";
 import {User} from "../models/User";
 import {UsersService} from "../services/users/UsersService";
-import {LoginLocalProtocol} from "./LoginLocalProtocol";
+import {LoginLocalProtocol} from "./LoginLocalProtocol.js";
 
 describe("LoginLocalProtocol", () => {
   beforeEach(() => PlatformTest.create());

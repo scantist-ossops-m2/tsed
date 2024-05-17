@@ -1,7 +1,7 @@
 import {PathParams} from "@tsed/platform-params";
 import {Get} from "@tsed/schema";
 import {Controller} from "@tsed/di";
-import {BaseCtrl} from "./BaseCtrl";
+import {BaseCtrl} from "./BaseCtrl.js";
 
 @Controller("/child")
 export abstract class ChildCtrl extends BaseCtrl {

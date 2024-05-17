@@ -1,5 +1,5 @@
 import {CollectionOf, Generics} from "@tsed/schema";
-import {DocumentLink} from "./DocumentLink";
+import {DocumentLink} from "./DocumentLink.js";
 
 @Generics("T")
 export class Document<T> {

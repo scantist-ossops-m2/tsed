@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {Req} from "@tsed/common";
 import {Arg, OnInstall, OnVerify, Protocol} from "@tsed/passport";
 import {Strategy} from "passport";

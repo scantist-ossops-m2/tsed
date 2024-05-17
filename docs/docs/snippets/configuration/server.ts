@@ -1,5 +1,5 @@
 import {Configuration} from "@tsed/di";
-import {MyController} from "./controllers/manual/MyController";
+import {MyController} from "./controllers/manual/MyController.js";
 
 @Configuration({
   mount: {

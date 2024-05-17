@@ -20,7 +20,11 @@ async function main() {
 
   const tsConfigRootPath = join(monoRepo.rootDir, "tsconfig.json");
   const tsConfigRoot = await fs.readJson(tsConfigRootPath);
-  tsConfigRoot.references = [];
+  tsConfigRoot.references = [
+    // {
+    //   "path": "./tsconfig.spec.json"
+    // }
+  ];
 
   const packages = await findPackages(monoRepo);
 
@@ -59,7 +63,7 @@ async function main() {
       await fs.writeJson(tsConfigBuildPath, tsConfigBuild, {spaces: 2});
 
       tsConfigRoot.references.push({
-        path: `./${relative(process.cwd(), path)}`
+        path: `./${relative(process.cwd(), path)}/tsconfig.build.json`
       });
 
       pkg.pkg = {

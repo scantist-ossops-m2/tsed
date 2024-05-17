@@ -7,12 +7,10 @@ import {getSpec, Groups, Post, Property, Required, Returns, SpecTypes} from "@ts
 import bodyParser from "body-parser";
 import compress from "compression";
 import cookieParser from "cookie-parser";
-import filedirname from "filedirname";
 import methodOverride from "method-override";
 import SuperTest from "supertest";
 
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
 
 class MyModel {
   @Groups("!creation")

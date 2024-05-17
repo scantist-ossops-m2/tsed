@@ -1,4 +1,5 @@
-import {ServerOptions} from "graphql-ws/lib/server";
+// @ts-expect-error
+import type {ServerOptions} from "graphql-ws/lib/server";
 import {ServerOptions as WSServerOptions} from "ws";
 
 export interface GraphQLWSOptions {

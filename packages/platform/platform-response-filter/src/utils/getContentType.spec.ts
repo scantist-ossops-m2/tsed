@@ -1,6 +1,6 @@
 import {PlatformTest, View} from "@tsed/common";
 import {EndpointMetadata, Get, Returns} from "@tsed/schema";
-import {getContentType} from "./getContentType";
+import {getContentType} from "./getContentType.js";
 
 describe("getContentType", () => {
   beforeEach(() => PlatformTest.create());
@@ -12,7 +12,7 @@ describe("getContentType", () => {
       get() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(TestController, "get");
 
     const result = getContentType(
@@ -31,7 +31,7 @@ describe("getContentType", () => {
       get() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(TestController, "get");
     ctx.response.getRes().statusCode = 200;
     jest.spyOn(ctx.response, "getContentType").mockReturnValue("application/json");
@@ -52,7 +52,7 @@ describe("getContentType", () => {
       get() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(TestController, "get");
     ctx.response.getRes().statusCode = 200;
     jest.spyOn(ctx.response, "getContentType").mockReturnValue("application/json");
@@ -73,7 +73,7 @@ describe("getContentType", () => {
       get() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(TestController, "get");
     ctx.response.getRes().statusCode = 200;
     jest.spyOn(ctx.response, "getContentType").mockReturnValue("text/html");
@@ -95,7 +95,7 @@ describe("getContentType", () => {
       get() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(TestController, "get");
     ctx.response.getRes().statusCode = 200;
     ctx.view = "true";

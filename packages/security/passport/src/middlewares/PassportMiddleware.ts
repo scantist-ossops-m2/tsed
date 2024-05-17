@@ -1,20 +1,20 @@
+import {Context, PlatformContext} from "@tsed/common";
 import {Inject} from "@tsed/di";
 import {Middleware} from "@tsed/platform-middlewares";
-import {Context} from "@tsed/common";
-import {ProtocolsService} from "../services/ProtocolsService";
-import {getProtocolsFromRequest} from "../utils/getProtocolsFromRequest";
+import {ProtocolsService} from "../services/ProtocolsService.js";
+import {getProtocolsFromRequest} from "../utils/getProtocolsFromRequest.js";
 
 @Middleware()
 export class PassportMiddleware {
   @Inject(ProtocolsService)
   protocolsService: ProtocolsService;
 
-  shouldSkip(ctx: Context) {
+  shouldSkip(ctx: PlatformContext) {
     const request = ctx.getRequest();
     return request.user && request.isAuthenticated();
   }
 
-  async use(@Context() ctx: Context) {
+  async use(@Context() ctx: PlatformContext) {
     const endpoint = ctx.endpoint;
     const request = ctx.getRequest();
 

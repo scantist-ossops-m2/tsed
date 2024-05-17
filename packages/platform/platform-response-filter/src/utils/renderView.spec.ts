@@ -1,7 +1,7 @@
 import {EndpointMetadata, Get, PlatformTest} from "@tsed/common";
 import {Ignore, Property, Returns} from "@tsed/schema";
 import {View} from "@tsed/platform-views";
-import {renderView} from "./renderView";
+import {renderView} from "./renderView.js";
 
 describe("renderView", () => {
   beforeEach(() => PlatformTest.create());
@@ -23,7 +23,7 @@ describe("renderView", () => {
       test() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Test, "test");
 
     jest.spyOn(ctx.response, "render").mockResolvedValue("HTML");
@@ -45,10 +45,10 @@ describe("renderView", () => {
       test() {}
     }
 
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Test, "test");
 
-    jest.spyOn(ctx.response, "render").mockRejectedValue(new Error("parser error"));
+    jest.spyOn(ctx.response as any, "render").mockRejectedValue(new Error("parser error"));
 
     ctx.data = {data: "data"};
 

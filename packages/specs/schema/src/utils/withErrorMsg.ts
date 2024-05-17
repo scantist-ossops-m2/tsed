@@ -1,5 +1,5 @@
 import {useDecorators} from "@tsed/core";
-import {ErrorMsg} from "../decorators/common/errorMsg";
+import {ErrorMsg} from "../decorators/common/errorMsg.js";
 
 export interface ErrorChainedMethods<T> {
   <T>(target: Object, propertyKey?: string | symbol | undefined, descriptor?: TypedPropertyDescriptor<T> | number): any;

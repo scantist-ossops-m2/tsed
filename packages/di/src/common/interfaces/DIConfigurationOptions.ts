@@ -1,7 +1,7 @@
-import type {ProviderScope} from "../domain/ProviderScope";
-import type {DIResolver} from "./DIResolver";
-import type {TokenProvider} from "./TokenProvider";
-import {TokenProviderOpts} from "./TokenProvider";
+import type {ProviderScope} from "../domain/ProviderScope.js";
+import type {DIResolver} from "./DIResolver.js";
+import type {TokenProvider} from "./TokenProvider.js";
+import {TokenProviderOpts} from "./TokenProvider.js";
 
 declare global {
   namespace TsED {
@@ -9,7 +9,7 @@ declare global {
     interface Context {}
 
     interface Configuration extends Record<string, any> {
-      scopes: {[key: string]: ProviderScope};
+      scopes: Record<string, ProviderScope>;
       /**
        * Define a list of resolvers (it can be an external DI).
        */

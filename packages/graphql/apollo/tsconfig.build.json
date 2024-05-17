@@ -9,8 +9,7 @@
     "declarationDir": "./lib/types",
     "declaration": true,
     "composite": true,
-    "noEmit": false,
-    "skipLibCheck": true
+    "noEmit": false
   },
   "include": ["src", "src/**/*.json"],
   "exclude": [

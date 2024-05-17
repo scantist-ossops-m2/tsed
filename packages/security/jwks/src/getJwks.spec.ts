@@ -1,10 +1,8 @@
-import filedirname from "filedirname";
 import fs from "fs-extra";
 import {join} from "path";
-import {generateJwks, getJwks} from "./getJwks";
+import {generateJwks, getJwks} from "./getJwks.js";
 
-// FIXME remove when esm is ready
-const [, dir] = filedirname();
+const dir = import.meta.dirname;
 const rootDir = join(dir, "__mocks__");
 
 describe("GetJwks", () => {

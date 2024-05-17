@@ -5,11 +5,9 @@ import bodyParser from "body-parser";
 import compress from "compression";
 
 import cookieParser from "cookie-parser";
-import filedirname from "filedirname";
 import methodOverride from "method-override";
 
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
 
 @Configuration({
   rootDir,

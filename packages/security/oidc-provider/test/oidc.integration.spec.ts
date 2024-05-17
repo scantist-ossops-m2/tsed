@@ -2,17 +2,15 @@ import {MemoryAdapter} from "@tsed/adapters";
 import {PlatformTest} from "@tsed/common";
 import {PlatformExpress} from "@tsed/platform-express";
 import {PlatformTestSdk} from "@tsed/platform-test-sdk";
-import filedirname from "filedirname";
 import SuperTest from "supertest";
-import {rootDir} from "../../../platform/platform-express/test/app/Server";
-import {InteractionsCtrl} from "./app/controllers/oidc/InteractionsCtrl";
-import {Server} from "./app/Server";
+import {rootDir} from "../../../platform/platform-express/test/app/Server.js";
+import {InteractionsCtrl} from "./app/controllers/oidc/InteractionsCtrl.js";
+import {Server} from "./app/Server.js";
 
 import {join} from "path";
-import {Accounts} from "./app/services/Accounts";
+import {Accounts} from "./app/services/Accounts.js";
 
-// FIXME remove when esm is ready
-const [, testDir] = filedirname();
+const testDir = import.meta.dirname;
 
 const utils = PlatformTestSdk.create({
   rootDir,

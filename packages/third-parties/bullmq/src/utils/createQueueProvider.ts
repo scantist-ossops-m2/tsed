@@ -1,8 +1,8 @@
 import {InjectorService} from "@tsed/di";
 import {JobsOptions, Queue, QueueOptions} from "bullmq";
 import {queue} from "rxjs";
-import {BullMQTypes} from "../constants/BullMQTypes";
-import {getQueueToken} from "./getQueueToken";
+import {BullMQTypes} from "../constants/BullMQTypes.js";
+import {getQueueToken} from "./getQueueToken.js";
 
 export function createQueueProvider(injector: InjectorService, queue: string, opts: QueueOptions) {
   const token = getQueueToken(queue);

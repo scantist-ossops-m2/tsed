@@ -2,8 +2,8 @@ import {EndpointMetadata, PlatformTest} from "@tsed/common";
 import {catchError} from "@tsed/core";
 import "../index";
 import {Stripe} from "stripe";
-import {STRIPE_WEBHOOK_EVENT, STRIPE_WEBHOOK_SIGNATURE} from "../constants/constants";
-import {WebhookEventMiddleware} from "./WebhookEventMiddleware";
+import {STRIPE_WEBHOOK_EVENT, STRIPE_WEBHOOK_SIGNATURE} from "../constants/constants.js";
+import {WebhookEventMiddleware} from "./WebhookEventMiddleware.js";
 
 class Ctrl {
   get() {}
@@ -26,7 +26,7 @@ describe("WebhookEventMiddleware", () => {
 
   it("should construct event", async () => {
     const stripe = PlatformTest.get<Stripe>(Stripe);
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Ctrl, "get");
 
     const payload = {
@@ -49,7 +49,7 @@ describe("WebhookEventMiddleware", () => {
   });
   it("should construct event based on endpoint options", async () => {
     const stripe = PlatformTest.get<Stripe>(Stripe);
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Ctrl, "get");
     ctx.endpoint = EndpointMetadata.get(Ctrl, "get");
     ctx.endpoint.store.set(WebhookEventMiddleware, {
@@ -76,7 +76,7 @@ describe("WebhookEventMiddleware", () => {
   });
   it("should throw error when signature isn't valid", async () => {
     const stripe = PlatformTest.get<Stripe>(Stripe);
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Ctrl, "get");
 
     const payload = {
@@ -100,7 +100,7 @@ describe("WebhookEventMiddleware", () => {
   });
   it("should throw error when secret is missing", async () => {
     const stripe = PlatformTest.get<Stripe>(Stripe);
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
     ctx.endpoint = EndpointMetadata.get(Ctrl, "get");
     ctx.endpoint.store.set(WebhookEventMiddleware, {
       secret: null

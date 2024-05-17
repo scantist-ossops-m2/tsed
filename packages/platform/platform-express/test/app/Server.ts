@@ -5,11 +5,11 @@ import compress from "compression";
 import {Application} from "express";
 import session from "express-session";
 
-import filedirname from "filedirname";
 import "../../src/index";
 
 // FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
+
 export {rootDir};
 
 @Configuration({

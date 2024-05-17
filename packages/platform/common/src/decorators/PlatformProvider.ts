@@ -1,9 +1,8 @@
 import {Type} from "@tsed/core";
-import {PlatformAdapter} from "../services/PlatformAdapter";
-import {registerPlatformAdapter} from "../utils/registerPlatformAdapter";
+import {registerPlatformAdapter} from "../utils/registerPlatformAdapter.js";
 
-export function PlatformProvider() {
-  return (klass: Type<PlatformAdapter>) => {
-    registerPlatformAdapter(klass);
+export function PlatformProvider(): ClassDecorator {
+  return (klass) => {
+    registerPlatformAdapter(klass as unknown as Type);
   };
 }

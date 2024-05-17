@@ -4,9 +4,9 @@ import {deserialize, JsonDeserializerOptions, serialize} from "@tsed/json-mapper
 import {Logger} from "@tsed/logger";
 import {AsyncLocalStorage} from "async_hooks";
 import type {Cache, CachingConfig, MultiCache} from "cache-manager";
-import {PlatformCacheSettings} from "../interfaces/interfaces";
-import {PlatformCachedObject} from "../interfaces/PlatformCachedObject";
-import {getPrefix} from "../utils/getPrefix";
+import {PlatformCacheSettings} from "../interfaces/interfaces.js";
+import {PlatformCachedObject} from "../interfaces/PlatformCachedObject.js";
+import {getPrefix} from "../utils/getPrefix.js";
 
 const defaultKeyResolver = (args: any[]) => {
   return args.map((arg: any) => (isClass(arg) ? JSON.stringify(serialize(arg)) : arg)).join(":");

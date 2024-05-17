@@ -7,7 +7,7 @@
     "noEmit": true
   },
   "include": ["vite.config.ts"],
-  "exclude": [],
+  "exclude": ["lib"],
   "references": [
     {
       "path": "./tsconfig.build.json"

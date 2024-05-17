@@ -1,10 +1,10 @@
-import {Context, Middleware, MiddlewareMethods} from "@tsed/common";
+import {Context, Middleware, MiddlewareMethods, PlatformContext} from "@tsed/common";
 import {BadRequest} from "@tsed/exceptions";
 import url from "url";
 
 @Middleware()
 export class OidcSecureMiddleware implements MiddlewareMethods {
-  use(@Context() ctx: Context) {
+  use(@Context() ctx: PlatformContext) {
     const req = ctx.request;
 
     if (!req.secure) {

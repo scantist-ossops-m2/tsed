@@ -1,7 +1,7 @@
 import {PlatformTest} from "@tsed/common";
 
-import {ViteService} from "../services/ViteService";
-import {ViteRendererMiddleware} from "./ViteRendererMiddleware";
+import {ViteService} from "../services/ViteService.js";
+import {ViteRendererMiddleware} from "./ViteRendererMiddleware.js";
 
 const rootDir = import.meta.dirname;
 
@@ -20,7 +20,7 @@ describe("ViteRenderMiddleware", () => {
         render: jest.fn()
       };
 
-      const $ctx = PlatformTest.createRequestContext();
+      const $ctx: any = PlatformTest.createRequestContext();
       jest.spyOn($ctx.response, "body");
 
       viteService.render.mockResolvedValue("result");
@@ -43,7 +43,7 @@ describe("ViteRenderMiddleware", () => {
         render: jest.fn()
       };
 
-      const $ctx = PlatformTest.createRequestContext();
+      const $ctx: any = PlatformTest.createRequestContext();
       jest.spyOn($ctx.response, "body");
       jest.spyOn($ctx.response, "isDone").mockReturnValue(true);
 

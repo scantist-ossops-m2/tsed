@@ -4,7 +4,7 @@ import multer, {FileFilterCallback} from "multer";
 import {dirname, join} from "path";
 import readPkgUp from "read-pkg-up";
 import SuperTest from "supertest";
-import {PlatformTestingSdkOpts} from "../interfaces";
+import {PlatformTestingSdkOpts} from "../interfaces/index.js";
 
 const rootDir = import.meta.dirname;
 

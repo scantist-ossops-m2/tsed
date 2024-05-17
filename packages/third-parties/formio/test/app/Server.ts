@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import methodOverride from "method-override";
 import "../../src";
-import template from "../template/project.json";
+import template from "../template/project.json" assert {type: "json"};
 
 const rootDir = import.meta.dirname;
 

@@ -1,9 +1,9 @@
 import {Context, EndpointMetadata, Get, PlatformContext, PlatformTest, View} from "@tsed/common";
 import {catchAsyncError} from "@tsed/core";
 import {Returns} from "@tsed/schema";
-import {ResponseFilter} from "../decorators/responseFilter";
-import {ResponseFilterMethods} from "../interfaces/ResponseFilterMethods";
-import {PlatformResponseFilter} from "./PlatformResponseFilter";
+import {ResponseFilter} from "../decorators/responseFilter.js";
+import {ResponseFilterMethods} from "../interfaces/ResponseFilterMethods.js";
+import {PlatformResponseFilter} from "./PlatformResponseFilter.js";
 
 @ResponseFilter("custom/json")
 class CustomJsonFilter implements ResponseFilterMethods {
@@ -29,7 +29,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
       const data = {text: "test"};
 
@@ -54,7 +54,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
       const data = {text: "test"};
 
@@ -77,7 +77,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
       const data = {text: "test"};
 
@@ -100,7 +100,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       const data = {text: "test"};
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
@@ -133,7 +133,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       const data = {text: "test"};
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
@@ -157,7 +157,7 @@ describe("PlatformResponseFilter", () => {
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
 
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       const data = {text: "test"};
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
@@ -185,7 +185,7 @@ describe("PlatformResponseFilter", () => {
   describe("serialize()", () => {
     it("should transform value", async () => {
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
 
       const result = await platformResponseFilter.serialize({test: "test"}, ctx);
 
@@ -198,7 +198,7 @@ describe("PlatformResponseFilter", () => {
       }
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
       jest.spyOn(ctx.endpoint, "getResponseOptions");
@@ -215,7 +215,7 @@ describe("PlatformResponseFilter", () => {
       }
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
       jest.spyOn(ctx.endpoint, "getResponseOptions");
@@ -234,7 +234,7 @@ describe("PlatformResponseFilter", () => {
       }
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
 
       jest.spyOn(ctx.endpoint, "getResponseOptions");
@@ -256,7 +256,7 @@ describe("PlatformResponseFilter", () => {
       }
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
       jest.spyOn(ctx.response, "render").mockResolvedValue("template");
 
@@ -272,7 +272,7 @@ describe("PlatformResponseFilter", () => {
       }
 
       const platformResponseFilter = PlatformTest.get<PlatformResponseFilter>(PlatformResponseFilter);
-      const ctx = PlatformTest.createRequestContext();
+      const ctx: any = PlatformTest.createRequestContext();
       ctx.endpoint = EndpointMetadata.get(Test, "test");
       jest.spyOn(ctx.response, "render").mockRejectedValue(new Error("parsing error"));
 

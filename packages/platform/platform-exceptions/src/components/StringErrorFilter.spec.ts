@@ -1,12 +1,12 @@
 import {PlatformTest} from "@tsed/common";
-import {StringErrorFilter} from "./StringErrorFilter";
+import {StringErrorFilter} from "./StringErrorFilter.js";
 
 describe("StringErrorFilter", () => {
   beforeEach(() => PlatformTest.create());
   afterEach(() => PlatformTest.reset());
   it("should map message", () => {
     const instance = new StringErrorFilter();
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
 
     instance.catch("message", ctx);
 
@@ -14,7 +14,7 @@ describe("StringErrorFilter", () => {
   });
   it("should map undefined message", () => {
     const instance = new StringErrorFilter();
-    const ctx = PlatformTest.createRequestContext();
+    const ctx: any = PlatformTest.createRequestContext();
 
     instance.catch(undefined as any, ctx);
 

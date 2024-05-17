@@ -1,8 +1,9 @@
 import {catchError} from "@tsed/core";
 import {EndpointMetadata, Get} from "@tsed/schema";
-import {AcceptMime} from "../exports";
-import {PlatformTest} from "../services/PlatformTest";
-import {PlatformAcceptMimesMiddleware} from "./PlatformAcceptMimesMiddleware";
+import {a} from "vite/dist/node/types.d-aGj9QkWt";
+import {AcceptMime} from "../exports.js";
+import {PlatformTest} from "../services/PlatformTest.js";
+import {PlatformAcceptMimesMiddleware} from "./PlatformAcceptMimesMiddleware.js";
 
 describe("PlatformMimesMiddleware", () => {
   describe("when server has configuration", () => {
@@ -25,7 +26,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });
@@ -51,7 +52,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "text/*, application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });
@@ -75,7 +76,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "text/*, application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request}
       });
       jest.spyOn(request, "accepts");
@@ -98,7 +99,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "application/xml"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });
@@ -124,7 +125,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });
@@ -148,7 +149,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });
@@ -172,7 +173,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "text/*, application/json"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {
           request
         },
@@ -198,7 +199,7 @@ describe("PlatformMimesMiddleware", () => {
           accept: "application/xml"
         }
       });
-      const ctx = PlatformTest.createRequestContext({
+      const ctx: any = PlatformTest.createRequestContext({
         event: {request},
         endpoint
       });

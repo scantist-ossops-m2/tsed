@@ -1,12 +1,10 @@
-import {engines} from "../../src/index";
+import {engines} from "../../src/index.js";
 import {expect} from "chai";
-import filedirname from "filedirname";
 import fs from "fs";
 import sinon from "sinon";
 import {join} from "path";
 
-// FIXME remove when esm is ready
-const [, dir] = filedirname();
+const dir = import.meta.dirname;
 const rootDir = join(dir, "..");
 const sandbox = sinon.createSandbox();
 

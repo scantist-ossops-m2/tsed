@@ -1,8 +1,8 @@
 import {GeneratorOptions} from "@prisma/generator-helper";
 import {parseEnvValue} from "@prisma/internals";
 import fs from "fs-extra";
-import {generateCode} from "../generator/generateCode";
-import removeDir from "../generator/utils/removeDir";
+import {generateCode} from "../generator/generateCode.js";
+import removeDir from "../generator/utils/removeDir.js";
 import path, {join} from "path";
 
 const rootDir = __dirname;
@@ -33,7 +33,7 @@ export async function generate(options: GeneratorOptions) {
   });
 
   if (outputDir === defaultOutput) {
-    await fs.copy(join(packageDir, "scripts", "backup-index.cjs.js"), join(packageDir, "lib", "cjs", "index.js"));
+    await fs.copy(join(packageDir, "scripts", "backup-index.cjs"), join(packageDir, "lib", "cjs", "index.js"));
     await fs.copy(join(packageDir, "scripts", "backup-index.esm.js"), join(packageDir, "lib", "esm", "index.js"));
     await fs.copy(join(packageDir, "scripts", "backup-index.d.ts"), join(packageDir, "lib", "types", "index.d.ts"));
   }

@@ -1,13 +1,13 @@
 import {catchError} from "@tsed/core";
 import Sinon from "sinon";
-import {PrimitiveMapper} from "./PrimitiveMapper";
+import {PrimitiveMapper} from "./PrimitiveMapper.js";
 
 describe("PrimitiveMapper", () => {
   describe("deserialize()", () => {
     it("should return value (number => string)", () => {
       const mapper = new PrimitiveMapper();
       const data = 1;
-      const ctx = {
+      const ctx: any = {
         type: String,
         collectionType: undefined,
         next: Sinon.stub()
@@ -20,7 +20,7 @@ describe("PrimitiveMapper", () => {
     it("should return value (string => string)", () => {
       const mapper = new PrimitiveMapper();
       const data = "1";
-      const ctx = {
+      const ctx: any = {
         type: String,
         collectionType: undefined,
         next: Sinon.stub()
@@ -33,7 +33,7 @@ describe("PrimitiveMapper", () => {
     it("should return value (null => number)", () => {
       const mapper = new PrimitiveMapper();
       const data = null;
-      const ctx = {
+      const ctx: any = {
         type: Number,
         collectionType: undefined,
         next: Sinon.stub()
@@ -46,7 +46,7 @@ describe("PrimitiveMapper", () => {
     it("should return value ('null' => number)", () => {
       const mapper = new PrimitiveMapper();
       const data = "null";
-      const ctx = {
+      const ctx: any = {
         type: Number,
         collectionType: undefined,
         next: Sinon.stub()
@@ -59,7 +59,7 @@ describe("PrimitiveMapper", () => {
     it("should return value (string => number)", () => {
       const mapper = new PrimitiveMapper();
       const data = "1";
-      const ctx = {
+      const ctx: any = {
         type: Number,
         collectionType: undefined,
         next: Sinon.stub()
@@ -72,7 +72,7 @@ describe("PrimitiveMapper", () => {
     it("should return value (number => number)", () => {
       const mapper = new PrimitiveMapper();
       const data = 1;
-      const ctx = {
+      const ctx: any = {
         type: Number,
         collectionType: undefined,
         next: Sinon.stub()
@@ -85,7 +85,7 @@ describe("PrimitiveMapper", () => {
     it("should return value (wrong number => number)", () => {
       const mapper = new PrimitiveMapper();
       const data = "t1";
-      const ctx = {
+      const ctx: any = {
         type: Number,
         collectionType: undefined,
         next: Sinon.stub()
@@ -97,7 +97,7 @@ describe("PrimitiveMapper", () => {
     });
     it("should return value (truthy => boolean)", () => {
       const mapper = new PrimitiveMapper();
-      const ctx = {
+      const ctx: any = {
         type: Boolean,
         collectionType: undefined,
         next: Sinon.stub()
@@ -110,7 +110,7 @@ describe("PrimitiveMapper", () => {
     });
     it("should return value (falsy => boolean)", () => {
       const mapper = new PrimitiveMapper();
-      const ctx = {
+      const ctx: any = {
         type: Boolean,
         collectionType: undefined,
         next: Sinon.stub()

@@ -1,11 +1,10 @@
-import {engines, requires} from "../../src/index";
+import {engines, requires} from "../../src/index.js";
 import {expect} from "chai";
-import filedirname from "filedirname";
 import fs from "fs";
 import {join} from "path";
 
 // FIXME remove when esm is ready
-const [, dir] = filedirname();
+const dir = import.meta.dirname;
 
 const rootDir = join(dir, "..");
 

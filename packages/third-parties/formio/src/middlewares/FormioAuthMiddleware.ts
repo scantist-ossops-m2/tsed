@@ -1,8 +1,8 @@
-import {Context, Inject, Middleware} from "@tsed/common";
+import {Context, Inject, Middleware, PlatformContext} from "@tsed/common";
 import {getValue} from "@tsed/core";
 import {Unauthorized} from "@tsed/exceptions";
 import {promisify} from "util";
-import {FormioService} from "../services/FormioService";
+import {FormioService} from "../services/FormioService.js";
 
 /**
  * @middleware
@@ -17,7 +17,7 @@ export class FormioAuthMiddleware {
     return promisify(this.formio.middleware.tokenHandler);
   }
 
-  async use(@Context() ctx: Context) {
+  async use(@Context() ctx: PlatformContext) {
     const req = ctx.getRequest();
     const res = ctx.getResponse();
 

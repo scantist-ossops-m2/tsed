@@ -3,7 +3,7 @@ import {ContentType} from "@tsed/schema";
 import {createReadStream} from "fs";
 import {join} from "path";
 import SuperTest from "supertest";
-import {PlatformTestingSdkOpts} from "../interfaces";
+import {PlatformTestingSdkOpts} from "../interfaces/index.js";
 
 const rootDir = import.meta.dirname;
 

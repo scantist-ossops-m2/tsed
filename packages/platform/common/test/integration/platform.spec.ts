@@ -5,12 +5,10 @@ import {PlatformTestSdk} from "@tsed/platform-test-sdk";
 import bodyParser from "body-parser";
 import compress from "compression";
 import cookieParser from "cookie-parser";
-import filedirname from "filedirname";
 import methodOverride from "method-override";
 import SuperTest from "supertest";
 
-// FIXME remove when esm is ready
-const [, rootDir] = filedirname();
+const rootDir = import.meta.dirname;
 
 @Controller("/hello")
 class TestHelloWorld {

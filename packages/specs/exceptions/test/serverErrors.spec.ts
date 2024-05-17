@@ -8,7 +8,6 @@ import {
   NotExtended,
   NotImplemented,
   ProxyError,
-  ServiceUnvailable,
   VariantAlsoNegotiates
 } from "@tsed/exceptions";
 
@@ -114,19 +113,6 @@ describe("ServerErrors", () => {
 
       expect(err.status).toEqual(502);
       expect(err.toString()).toEqual("PROXY_ERROR(502): message");
-    });
-  });
-
-  describe("ServiceUnvailable", () => {
-    it("should emit an exception", () => {
-      const err = new ServiceUnvailable("message");
-
-      catchError(() => {
-        throw err;
-      });
-
-      expect(err.status).toEqual(503);
-      expect(err.toString()).toEqual("SERVICE_UNAVAILABLE(503): message");
     });
   });
 

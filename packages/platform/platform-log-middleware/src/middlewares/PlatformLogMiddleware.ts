@@ -1,8 +1,8 @@
 import {cleanObject} from "@tsed/core";
-import {Constant} from "@tsed/di";
+import {BaseContext, Constant} from "@tsed/di";
 import {Middleware, MiddlewareMethods} from "@tsed/platform-middlewares";
 import {Context} from "@tsed/platform-params";
-import type {LoggerRequestFields} from "../domain/PlatformLogMiddlewareSettings";
+import type {LoggerRequestFields} from "../domain/PlatformLogMiddlewareSettings.js";
 
 /**
  * @middleware
@@ -32,7 +32,7 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
   /**
    * Handle the request.
    */
-  public use(@Context() ctx: Context): void {
+  public use(@Context() ctx: BaseContext): void {
     this.configureRequest(ctx);
     this.onLogStart(ctx);
 
@@ -42,24 +42,25 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
   /**
    * Called when the `$onResponse` is called by Ts.ED (through Express.end).
    */
-  onLogEnd(ctx: Context) {
+  onLogEnd(ctx: BaseContext) {
     const {logRequest, logEnd, logLevel} = this.settings;
     const started = ctx.logStarted;
 
     if (logEnd && started) {
       if (ctx.response.statusCode >= 400) {
+        const error = ctx.error as undefined | Record<string, any>;
         ctx.logger.error({
           event: "request.end",
           status: ctx.response.statusCode,
           status_code: String(ctx.response.statusCode),
           state: "KO",
           ...cleanObject({
-            error_name: ctx.error?.name || ctx.error?.code,
-            error_message: ctx.error?.message,
-            error_errors: ctx.error?.errors,
-            error_stack: ctx.error?.stack,
-            error_body: ctx.error?.body,
-            error_headers: ctx.error?.headers
+            error_name: error?.name || error?.code,
+            error_message: error?.message,
+            error_errors: error?.errors,
+            error_stack: error?.stack,
+            error_body: error?.body,
+            error_headers: error?.headers
           })
         });
       } else {
@@ -87,7 +88,7 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
    * The separate onLogStart() function will allow developer to overwrite the initial request log.
    * @param ctx
    */
-  protected onLogStart(ctx: Context) {
+  protected onLogStart(ctx: BaseContext) {
     const {logRequest, logLevel, logStart} = this.settings;
 
     ctx.logStarted = true;
@@ -108,7 +109,7 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
   /**
    * Attach all information that will be necessary to log the request. Attach a new `request.log` object.
    */
-  protected configureRequest(ctx: Context) {
+  protected configureRequest(ctx: BaseContext) {
     ctx.logger.alterLog((obj: any, level, withRequest) => {
       switch (level) {
         case "info":
@@ -126,7 +127,7 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
    * @returns {Object}
    * @param ctx
    */
-  protected requestToObject(ctx: Context): any {
+  protected requestToObject(ctx: BaseContext): any {
     const {request} = ctx;
 
     return {
@@ -145,7 +146,7 @@ export class PlatformLogMiddleware implements MiddlewareMethods {
    * @returns {Object}
    * @param ctx
    */
-  protected minimalRequestPicker(ctx: Context): any {
+  protected minimalRequestPicker(ctx: BaseContext): any {
     const {requestFields} = this;
     const info = this.requestToObject(ctx);
 

@@ -1,8 +1,8 @@
 import "../../index";
-import {JsonEntityStore} from "../../domain/JsonEntityStore";
-import {getJsonSchema} from "../../utils/getJsonSchema";
-import {CollectionOf} from "../collections/collectionOf";
-import {MinLength} from "./minLength";
+import {JsonEntityStore} from "../../domain/JsonEntityStore.js";
+import {getJsonSchema} from "../../utils/getJsonSchema.js";
+import {CollectionOf} from "../collections/collectionOf.js";
+import {MinLength} from "./minLength.js";
 
 describe("@MinLength", () => {
   it("should declare minimum value", () => {

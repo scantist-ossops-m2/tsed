@@ -4,11 +4,11 @@ import {Inject, Injectable, InjectorService, Provider} from "@tsed/di";
 import {Unauthorized} from "@tsed/exceptions";
 import Passport, {Strategy} from "passport";
 import {promisify} from "util";
-import {PROVIDER_TYPE_PROTOCOL} from "../contants/constants";
-import {PassportException} from "../errors/PassportException";
-import {PassportMessage} from "../errors/PassportMessage";
-import type {ProtocolMethods} from "../interfaces/ProtocolMethods";
-import type {ProtocolOptions} from "../interfaces/ProtocolOptions";
+import {PROVIDER_TYPE_PROTOCOL} from "../contants/constants.js";
+import {PassportException} from "../errors/PassportException.js";
+import {PassportMessage} from "../errors/PassportMessage.js";
+import type {ProtocolMethods} from "../interfaces/ProtocolMethods.js";
+import type {ProtocolOptions} from "../interfaces/ProtocolOptions.js";
 
 /**
  * @ignore
@@ -122,7 +122,8 @@ export class ProtocolsService {
    */
   private getOptions(provider: Provider<any>): ProtocolOptions {
     const {name} = provider.store.get("protocol");
-    const {useStrategy = Strategy, settings = {}}: ProtocolOptions = this.injector.settings.get(`passport.protocols.${name}`) || {};
+    const {useStrategy = Strategy, settings = {}} =
+      this.injector.settings.get<Partial<ProtocolOptions>>(`passport.protocols.${name}`) || ({} as Partial<ProtocolOptions>);
 
     return {
       name,

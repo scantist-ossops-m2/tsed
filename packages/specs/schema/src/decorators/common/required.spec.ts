@@ -1,8 +1,8 @@
-import {getJsonSchema} from "../../index";
+import {getJsonSchema} from "../../index.js";
 import Ajv from "ajv";
-import {JsonEntityStore} from "../../domain/JsonEntityStore";
-import {Required} from "./required";
-import {Property} from "../common/property";
+import {JsonEntityStore} from "../../domain/JsonEntityStore.js";
+import {Required} from "./required.js";
+import {Property} from "../common/property.js";
 
 describe("@Required", () => {
   it("should declare required field", () => {

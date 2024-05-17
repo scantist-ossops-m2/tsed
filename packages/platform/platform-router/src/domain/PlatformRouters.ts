@@ -2,10 +2,10 @@ import {getValue, Hooks, Type} from "@tsed/core";
 import {ControllerProvider, GlobalProviders, Injectable, InjectorService, Provider, ProviderType, TokenProvider} from "@tsed/di";
 import {PlatformParamsCallback} from "@tsed/platform-params";
 import {concatPath, getOperationsRoutes, JsonMethodStore, OPERATION_HTTP_VERBS} from "@tsed/schema";
-import {useContextHandler} from "../utils/useContextHandler";
-import {PlatformHandlerMetadata} from "./PlatformHandlerMetadata";
-import {PlatformLayer} from "./PlatformLayer";
-import {PlatformRouter} from "./PlatformRouter";
+import {useContextHandler} from "../utils/useContextHandler.js";
+import {PlatformHandlerMetadata} from "./PlatformHandlerMetadata.js";
+import {PlatformLayer} from "./PlatformLayer.js";
+import {PlatformRouter} from "./PlatformRouter.js";
 
 let AUTO_INC = 0;
 
